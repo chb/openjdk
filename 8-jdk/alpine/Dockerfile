@@ -1,10 +1,9 @@
 #
-# NOTE: THIS DOCKERFILE IS GENERATED VIA "update.sh"
+# NOTE: THIS DOCKERFILE IS EDITED POST SCRIPT (update.sh) until further notice!
 #
-# PLEASE DO NOT EDIT IT DIRECTLY.
 #
-
-FROM alpine:3.4
+# Use custom alpine image
+FROM ihlchip/alpine-s6
 
 # A few problems with compiling Java from source:
 #  1. Oracle.  Licensing prevents us from redistributing the official JDK.
@@ -26,8 +25,9 @@ RUN { \
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
 
-ENV JAVA_VERSION 8u111
-ENV JAVA_ALPINE_VERSION 8.111.14-r0
+# Looked these up offline :)
+ENV JAVA_VERSION 8u121
+ENV JAVA_ALPINE_VERSION 8.121.13-r0
 
 RUN set -x \
 	&& apk add --no-cache \
